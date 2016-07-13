@@ -1,0 +1,21 @@
+CREATE TABLE `test`.`dmhy` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `time` VARCHAR(45) NOT NULL,
+  `classi` VARCHAR(45) NOT NULL,
+  `tiltle` VARCHAR(45) NOT NULL,
+  `magnetLink` TEXT NOT NULL,
+  `size` VARCHAR(45) NOT NULL,
+  `seedNum` INT NOT NULL,
+  `downNum` INT NOT NULL,
+  `comNum` INT NOT NULL,
+  `publisher` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `tiltle_UNIQUE` (`tiltle` ASC));
+  ALTER TABLE dmhy ADD INDEX tiltle_index(tiltle);
+  ALTER TABLE dmhy ADD INDEX id_index(id);
+ALTER TABLE `test`.`dmhy` 
+CHANGE COLUMN `tiltle` `tiltle` VARCHAR(150) NOT NULL ;
+ALTER TABLE `test`.`dmhy` 
+CHANGE COLUMN `seedNum` `seedNum` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `downNum` `downNum` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `comNum` `comNum` VARCHAR(45) NOT NULL ;

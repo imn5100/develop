@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.shaw.mallmapper.RestshopReportStatisticsMapper">
+	<resultMap id="restshopReportStatisticsMap" type="com.shaw.mallmapper.RestshopReportStatistics">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="report_time" property="reportTime" jdbcType="VARCHAR" />
+		<result column="entity_id" property="entityId" jdbcType="VARCHAR" />
+		<result column="discount_amount" property="discountAmount"
+			jdbcType="DECIMAL" />
+		<result column="result_amount" property="resultAmount"
+			jdbcType="DECIMAL" />
+		<result column="sale_order" property="saleOrder" jdbcType="BIGINT" />
+		<result column="sale_number" property="saleNumber" jdbcType="BIGINT" />
+		<result column="push_money" property="pushMoney" jdbcType="DECIMAL" />
+		<result column="invoice_count" property="invoiceCount"
+			jdbcType="BIGINT" />
+		<result column="recieve_amount" property="recieveAmount"
+			jdbcType="DECIMAL" />
+		<result column="is_valid" property="isValid" jdbcType="SMALLINT" />
+		<result column="create_time" property="createTime" jdbcType="BIGINT" />
+		<result column="op_time" property="opTime" jdbcType="BIGINT" />
+		<result column="last_ver" property="lastVer" jdbcType="BIGINT" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,report_time,entity_id,discount_amount,result_amount,sale_order,sale_number,push_money,invoice_count,recieve_amount,is_valid,create_time,op_time,last_ver
+	</sql>
+
+
+	<select id="getById" resultMap="restshopReportStatisticsMap">
+		select
+		<include refid="Base_Column_List" />
+		from restshopreportstatistics where id=#{id}
+	</select>
+
+</mapper>
