@@ -16,6 +16,7 @@ public class ProxyTest {
 		Object[] elements = new Object[10];
 		for (int i = 0; i < elements.length; i++) {
 			Integer value = i + 1;
+			//JDK代理无法使用泛型.
 			elements[i] = new TraceHandler().bind(value);
 		}
 		Integer key = new Random().nextInt(elements.length);
