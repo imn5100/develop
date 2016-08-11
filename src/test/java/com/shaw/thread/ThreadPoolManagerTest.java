@@ -14,12 +14,17 @@ public class ThreadPoolManagerTest {
 		ListenableFuture<ReturnEntity> result = ThreadPoolManager.INSTANCE.addExecuteTask(new Callable<ReturnEntity>() {
 			@Override
 			public ReturnEntity call() throws Exception {
-				Thread.sleep(1000 * 7);
 				ReturnEntity result = new ReturnEntity();
-				// 如果抛出任何一次，将会终止同一LIST中所有 线程执行
-				// result.setException(new Exception("sss"));
-				result.setResult("exe1");
+				try {
+					Thread.sleep(1000 * 7);
+					// 如果抛出任何一次，将会终止同一LIST中所有 线程执行
+					// result.setException(new Exception("sss"));
+					result.setResult("exe1");
+				} catch (Exception e) {
+					result.setException(e);
+				}
 				return result;
+
 			}
 		});
 		ListenableFuture<ReturnEntity> result2 = ThreadPoolManager.INSTANCE
@@ -41,9 +46,9 @@ public class ThreadPoolManagerTest {
 		 * 返回一个ListenableFuture ，该ListenableFuture
 		 * 返回的result是一个List，List中的值是每个ListenableFuture的返回值，
 		 * 假如传入的其中之一fails或者cancel，这个Future fails 或者canceled
-		 * */
-		 //ListenableFuture<List<ReturnEntity>> allFutures2 = Futures.allAsList(result, result2);
-		
+		 */
+		// ListenableFuture<List<ReturnEntity>> allFutures2 = Futures.allAsList(result, result2);
+
 		// 检查所有Future 不为空，空时抛出空指针异常
 		Preconditions.checkNotNull(allFutures);
 		// 设置定时获取Future结果，获取失败则取消所有 Future 并抛出异常
