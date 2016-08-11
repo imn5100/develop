@@ -5,6 +5,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 import com.google.common.base.Preconditions;
+import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.shaw.thread.AsynTask.Execute;
@@ -54,6 +55,7 @@ public class ThreadPoolManagerTest {
 		// 设置定时获取Future结果，获取失败则取消所有 Future 并抛出异常
 		List<ReturnEntity> allReturnEntity = catchFutureGetException(allFutures, 20, TimeUnit.SECONDS);
 		Preconditions.checkNotNull(allReturnEntity);
+
 		for (ReturnEntity entity : allReturnEntity) {
 			if (null != entity) {
 				// 尝试抛出异常，如果Future执行中出现异常将会抛出。
@@ -86,5 +88,18 @@ public class ThreadPoolManagerTest {
 		if (allFutures != null) {
 			allFutures.cancel(true);
 		}
+	}
+
+	// 通过callBack 完成Future 的结果获取和失败调用
+	private static void callBack(ListenableFuture<List<ReturnEntity>> explosion) {
+		Futures.addCallback(explosion, new FutureCallback<Object>() {
+			@Override
+			public void onSuccess(Object result) {
+			}
+
+			@Override
+			public void onFailure(Throwable t) {
+			}
+		});
 	}
 }
