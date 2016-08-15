@@ -16,6 +16,14 @@ public class AsynTask implements Callable<ReturnEntity> {
 		return new AsynTask(taskName);
 	}
 
+	public String getTaskName() {
+		return taskName;
+	}
+
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+
 	public AsynTask registExecute(Execute execute) {
 		this.execute = execute;
 		return this;

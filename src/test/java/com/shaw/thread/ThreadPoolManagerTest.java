@@ -70,7 +70,7 @@ public class ThreadPoolManagerTest {
 				}
 			}
 		}
-		//callBack(allFutures);
+		callBack(allFutures);
 
 	}
 
