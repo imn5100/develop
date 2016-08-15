@@ -48,7 +48,8 @@ public class ThreadPoolManagerTest {
 		 * 返回的result是一个List，List中的值是每个ListenableFuture的返回值，
 		 * 假如传入的其中之一fails或者cancel，这个Future fails 或者canceled
 		 */
-		// ListenableFuture<List<ReturnEntity>> allFutures2 = Futures.allAsList(result, result2);
+		// ListenableFuture<List<ReturnEntity>> allFutures2 =
+		// Futures.allAsList(result, result2);
 
 		// 检查所有Future 不为空，空时抛出空指针异常
 		Preconditions.checkNotNull(allFutures);
@@ -69,6 +70,7 @@ public class ThreadPoolManagerTest {
 				}
 			}
 		}
+		//callBack(allFutures);
 
 	}
 
@@ -91,10 +93,10 @@ public class ThreadPoolManagerTest {
 	}
 
 	// 通过callBack 完成Future 的结果获取和失败调用
-	private static void callBack(ListenableFuture<List<ReturnEntity>> explosion) {
-		Futures.addCallback(explosion, new FutureCallback<Object>() {
+	private static <T> void callBack(ListenableFuture<T> explosion) {
+		Futures.addCallback(explosion, new FutureCallback<T>() {
 			@Override
-			public void onSuccess(Object result) {
+			public void onSuccess(T result) {
 			}
 
 			@Override
