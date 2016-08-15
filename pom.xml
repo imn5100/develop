@@ -274,11 +274,17 @@
 		</dependency>
 
 
-		<!--  canal  test -->
+		<!-- canal test -->
 		<dependency>
 			<groupId>com.alibaba.otter</groupId>
 			<artifactId>canal.client</artifactId>
 			<version>1.0.22</version>
+		</dependency>
+		<!-- rocketmq test -->
+		<dependency>
+			<groupId>com.alibaba.rocketmq</groupId>
+			<artifactId>rocketmq-client</artifactId>
+			<version>3.2.6</version>
 		</dependency>
 
 	</dependencies>
