@@ -12,7 +12,7 @@ import com.alibaba.rocketmq.common.message.MessageExt;
 public class Consumer {
 	public static void main(String[] args) throws MQClientException {
 		DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("consumeGroupName");
-		consumer.setNamesrvAddr("10.1.50.124:9876");
+		consumer.setNamesrvAddr("127.0.0.1:9876");
 		consumer.setInstanceName("Consumer1");
 
 		// 订阅消息topic

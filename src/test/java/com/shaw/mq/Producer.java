@@ -11,7 +11,7 @@ public class Producer {
 	public static void main(String[] args)
 			throws MQClientException, RemotingException, MQBrokerException, InterruptedException {
 		DefaultMQProducer producer = new DefaultMQProducer("testProductGroup");
-		producer.setNamesrvAddr("10.1.50.124:9876");
+		producer.setNamesrvAddr("127.0.0.1:9876");
 		producer.setInstanceName("Producer1");
 		producer.start();
 		try {
